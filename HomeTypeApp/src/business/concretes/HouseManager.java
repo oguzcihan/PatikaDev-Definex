@@ -2,7 +2,6 @@ package business.concretes;
 
 import business.abstracts.HouseService;
 import data.AppData;
-import entites.House;
 
 /**
  * Ev tiplerinin business operasyonlarını ele alır.
@@ -11,7 +10,7 @@ import entites.House;
  * @since 2023-01-22
  */
 public class HouseManager implements HouseService {
-    private AppData _appData;
+    private final AppData _appData;
 
     public HouseManager(AppData appData) {
         _appData = appData;
@@ -62,7 +61,7 @@ public class HouseManager implements HouseService {
     @Override
     public double houseAverageSquareMeter() {
         double squareMeter = 0;
-        double averageSquareMeter = 0;
+        double averageSquareMeter;
         for (var house : _appData.getHouseList()) {
             squareMeter += house.getSquareMeters();
         }
@@ -74,7 +73,7 @@ public class HouseManager implements HouseService {
     @Override
     public double villaAverageSquareMeter() {
         double squareMeter = 0;
-        double averageSquareMeter = 0;
+        double averageSquareMeter;
         for (var house : _appData.getVillaList()) {
             squareMeter += house.getSquareMeters();
         }
@@ -86,7 +85,7 @@ public class HouseManager implements HouseService {
     @Override
     public double summerhouseAverageSquareMeter() {
         double squareMeter = 0;
-        double averageSquareMeter = 0;
+        double averageSquareMeter;
         for (var house : _appData.getSummerhouseList()) {
             squareMeter += house.getSquareMeters();
         }
@@ -98,8 +97,8 @@ public class HouseManager implements HouseService {
     @Override
     public double allTypeHouseAverageSquareMeter() {
         double squareMeter = 0;
-        double averageSquareMeter = 0;
-        int allTypeSize = 0;
+        double averageSquareMeter;
+        int allTypeSize;
         allTypeSize = _appData.getHouseList().size() + _appData.getVillaList().size() + _appData.getSummerhouseList().size();
 
         for (var house : _appData.getHouseList()) {
@@ -116,7 +115,4 @@ public class HouseManager implements HouseService {
         return averageSquareMeter;
     }
 
-    /*
-    Oda ve salon sayısına göre tam olarak ne yapılmak isteniyor anlayamadığım için yapmadım.
-     */
 }
