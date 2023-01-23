@@ -3,6 +3,8 @@ package business.concretes;
 import business.abstracts.HouseService;
 import data.AppData;
 
+import java.util.List;
+
 /**
  * Ev tiplerinin business operasyonlarını ele alır.
  *
@@ -102,6 +104,11 @@ public class HouseManager implements HouseService {
         averageSquareMeter = squareMeter / allTypeSize;
 
         return averageSquareMeter;
+    }
+
+    @Override
+    public List<Object> getByNumberOfRoomAndHall(int room, int hall) {
+        return null;
     }
 
 }

@@ -1,4 +1,5 @@
 package business.abstracts;
+import java.util.List;
 
 /**
  * Ev tiplerinin business operasyonlarını ele alan interface.
@@ -48,5 +49,5 @@ public interface HouseService {
      */
     double allTypeHouseAverageSquareMeter();
 
-
+    List<Object> getByNumberOfRoomAndHall(int room, int hall);
 }
