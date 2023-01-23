@@ -46,15 +46,9 @@ public class HouseManager implements HouseService {
     @Override
     public double allHouseTypePrice() {
         double total = 0;
-        for (var house : _appData.getHouseList()) {
-            total += house.getPrice();
-        }
-        for (var summerHouse : _appData.getSummerhouseList()) {
-            total += summerHouse.getPrice();
-        }
-        for (var villa : _appData.getVillaList()) {
-            total += villa.getPrice();
-        }
+        total += totalHousePrice();
+        total += totalSummerhousePrice();
+        total += totalVillaPrice();
         return total;
     }
 
@@ -101,15 +95,10 @@ public class HouseManager implements HouseService {
         int allTypeSize;
         allTypeSize = _appData.getHouseList().size() + _appData.getVillaList().size() + _appData.getSummerhouseList().size();
 
-        for (var house : _appData.getHouseList()) {
-            squareMeter += house.getSquareMeters();
-        }
-        for (var house : _appData.getSummerhouseList()) {
-            squareMeter += house.getSquareMeters();
-        }
-        for (var house : _appData.getSummerhouseList()) {
-            squareMeter += house.getSquareMeters();
-        }
+        squareMeter += houseAverageSquareMeter();
+        squareMeter += summerhouseAverageSquareMeter();
+        squareMeter += villaAverageSquareMeter();
+
         averageSquareMeter = squareMeter / allTypeSize;
 
         return averageSquareMeter;
