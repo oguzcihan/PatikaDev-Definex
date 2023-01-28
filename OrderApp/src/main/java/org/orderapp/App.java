@@ -1,13 +1,16 @@
 package org.orderapp;
 
+import org.orderapp.data.AppData;
+
 /**
  * Main Class
  *
  */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        AppData appData=new AppData();
+        appData.addCustomer();
     }
 }
