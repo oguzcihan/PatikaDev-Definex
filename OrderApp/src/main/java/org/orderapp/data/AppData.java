@@ -37,6 +37,8 @@ public class AppData {
 
     public void addCustomer() {
         _customerService.add(customerOne);
+        _customerService.add(customerTwo);
+        _customerService.add(customerThree);
     }
 
 }

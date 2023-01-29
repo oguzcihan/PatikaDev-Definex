@@ -4,7 +4,9 @@ import org.orderapp.business.abstracts.CustomerService;
 import org.orderapp.data.repositories.abstracts.IBaseRepository;
 import org.orderapp.entities.Customer;
 
+import java.time.Month;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class CustomerManager implements CustomerService {
 
@@ -21,16 +23,22 @@ public class CustomerManager implements CustomerService {
 
     @Override
     public List<String> getAll() {
-        return null;
+        return _baseRepository.customers().stream()
+                .map(Customer::toString).collect(Collectors.toList());
     }
 
     @Override
     public List<String> getCustomerByLetterC() {
-        return null;
+        return _baseRepository.customers().stream()
+                .filter(customer -> customer.getFirstname().contains("C".toLowerCase()))
+                .map(Customer::toString)
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Customer> getCustomersRegisteredInJune() {
-        return null;
+        return _baseRepository.customers().stream()
+                .filter(customer -> customer.getRegisterDate().getMonth() == Month.JUNE)
+                .collect(Collectors.toList());
     }
 }
